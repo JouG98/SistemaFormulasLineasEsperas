@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <title>Modelo A: Promedio de clientes-Espera</title>
 </head>
 
@@ -22,14 +22,27 @@
                 <div class="collapse navbar-collapse" id="menuNavegacion">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="index.html" class="nav-link">Inicio</a>
+                            <a href="../index.html" class="nav-link">Inicio</a>
                         </li>
 
 
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">Fórmulas: Modelo A</a>
                             <div class="dropdown-menu" aria-label="navbarDropdown">
+                                <a href="../Modelo_A/promedioSistema.html" class="dropdown-item">Promedio del sistema</a>
+                                <a href="../Modelo_A/probabilidadNclientes.html" class="dropdown-item">Probabilidad de "n" clientes</a>
+                                <a href="../Modelo_A/promedioClientesServicios.html" class="dropdown-item">Promedio de clientes-Servicio</a>
+                                <a href="../Modelo_A/promedioClientesEspera.html" class="dropdown-item">Promedio de clientes-Espera</a>
+                                <a href="../Modelo_A/promedioTiempoServicio.html" class="dropdown-item">Promedio de tiempo-Servicio</a>
+                                <a href="../Modelo_A/promedioTiempoEspera.html" class="dropdown-item">Promedio de tiempo-Espera</a>
+                            </div>
+                        </li>
+                        <!-- // -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">Fórmulas: Modelo B</a>
+                            <div class="dropdown-menu" aria-label="navbarDropdown">
                                 <a href="promedioSistema.html" class="dropdown-item">Promedio del sistema</a>
+                                <a href="probabilidad0clientes.html" class="dropdown-item">Probabilidad de "0" clientes</a>
                                 <a href="probabilidadNclientes.html" class="dropdown-item">Probabilidad de "n" clientes</a>
                                 <a href="promedioClientesServicios.html" class="dropdown-item">Promedio de clientes-Servicio</a>
                                 <a href="promedioClientesEspera.html" class="dropdown-item">Promedio de clientes-Espera</a>
@@ -37,11 +50,21 @@
                                 <a href="promedioTiempoEspera.html" class="dropdown-item">Promedio de tiempo-Espera</a>
                             </div>
                         </li>
-
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Contacto</a>
+                        <!-- // -->
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown">Fórmulas: Modelo C</a>
+                            <div class="dropdown-menu" aria-label="navbarDropdown">
+                                <a href="../Modelo_C/probabilidadNclientes.html" class="dropdown-item">Probabilidad de "0" clientes</a>
+                                <a href="../Modelo_C/promedioSistema.html" class="dropdown-item">Promedio del servidor</a>
+                                <a href="../Modelo_C/promedioClientesEspera.html" class="dropdown-item">Promedio de clientes-Espera</a>
+                                <a href="../Modelo_C/promedioClientesServicios.html" class="dropdown-item">Promedio de clientes-Sistema</a>
+                                <a href="../Modelo_C/promedioTiempoEspera.html" class="dropdown-item">Promedio de tiempo-Espera</a>
+                                <a href="../Modelo_C/promedioTiempoServicio.html" class="dropdown-item">Promedio de tiempo-Servicio</a>
+                            </div>
                         </li>
+
+
+
                     </ul>
 
                     <form action="" class="form-inline my-2 mylg-0">
@@ -57,7 +80,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="py-4 border-bottom">
-                    <h1 class="text-center">Promedio de clientes-Espera</h1>
+                    <h1 class="text-center">Promedio de espera en la fila</h1>
                 </div>
             </div>
         </div>
@@ -78,16 +101,17 @@
                         <form action="">
 
                             <div class="form-group">
-                                <label for=""><h3>Fórmula:  Lq = ρ*L</h3></label>
+                                <label for=""><h3>Fórmula:  Wq = Lq / λ </h3></label>
+
                             </div>
 
                             <div class="form-group text-left">
-                                <label for="inputAddress"><h5>ρ (Promedio del sistema) =</h5></label>
-                                <input type="number" class="form-control" id="proSis" placeholder="100 (clientes/hora)" autofocus required>
+                                <label for="inputAddress2"><h5>Lq (promedio clientes en espera) =</h5></label>
+                                <input type="number" class="form-control" id="proCli" placeholder="150 (clientes/hora)" autofocus required>
                             </div>
                             <div class="form-group text-left">
-                                <label for="inputAddress2"><h5>L (promedio clientes servicios) =</h5></label>
-                                <input type="number" class="form-control" id="proCli" placeholder="150 (clientes/hora)" autofocus required>
+                                <label for="inputAddress"><h5>λ (Media de llegada) =</h5></label>
+                                <input type="number" class="form-control" id="MediaLlegada" placeholder="100 (clientes/hora)" autofocus required>
                             </div>
 
                             <button type="button" class="btn btn-primary" onclick="promedioEspera()" value="Resultado">
@@ -140,10 +164,10 @@
     </footer>
 
 
-    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="../js/jquery-3.4.1.min.js"></script>
     <script src="jsFunciones.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
 </body>
 
 </html>
