@@ -44,8 +44,8 @@ function promedioSistema() {
 
     document.getElementById('result').value = resultado1.toFixed(3);
 
-    resultadoF = `${resultado1.toFixed(2) * 100} %`;
-    document.getElementById('por').value = resultadoF;
+    // resultadoF = `${resultado1.toFixed(2) * 100} %`;
+    // document.getElementById('por').value = resultadoF;
 
 
 
@@ -81,95 +81,140 @@ function probabilidad() {
     variable4 = parseFloat(document.getElementById('pSistema').value);
     variable5 = parseFloat(document.getElementById('nCliente').value);
 
-    //Factorial de n
-    var totalN = 1;
-    for (let i = 1; i <= variable5; i++) {
-        totalN = totalN * i;
-    }
-    var fac2 = totalN;
-
-    // Proceso1
+    //División
     pros1 = variable1 / variable3;
-    pros2 = Math.pow(pros1, variable5)
-    pros3 = pros2 / fac2;
-
-    // Factorial Sigma -1
-    var tol = 1;
-    for (let h = 1; h <= variable2 - 1; h++) {
-        tol = tol * h;
-        console.log(tol);
+    //Proceso sumatoria
+    var t = 1;
+    var sigue = 0;
+    for (let i = 0; i <= variable2 - 1; i++) {
+        pros2 = Math.pow(pros1, i);
+        console.log(`Valor: ${pros1}^${i}=${pros2}`);
+        t = t * i;
+        if (t == 0) {
+            t = 1;
+        }
+        pros3 = t;
+        console.log(`Acumulador: t=${t}* ${i} = ${pros3}`);
+        pros4 = pros2 / pros3;
+        console.log(`Division: (λ/µ)^n =${pros2} y esto dividido para el factorial: ${pros3} = ${pros4}`);
+        sigue = sigue + pros4;
+        console.log(`La suma de: ((λ/µ)^n) / n!= ${sigue} `);
     }
-    let par = tol;
-
-    //Factorial Sigma
-    var cel = 1;
-    var ti = 1;
-    let c = 0;
-
-    var conta = 0;
-    var ciclo = 1;
-    var acu = 1;
-    var fal = 1;
-    var cero = 1;
-    var vas = 0;
-
-
-    while (ciclo < variable2 && conta <= variable2 - 1) {
-        var basexPotencia = Math.pow(pros1, ciclo);
-        console.log(`Potencia de: ${pros1} ^ ${conta} = ${basexPotencia}`);
-
-
-        acu = acu * ciclo;
-        // var contenerdor = contenerdor + ciclo;
-        console.log(`El factorial de ${ciclo}! es: ${acu}`);
-
-        var entre = basexPotencia / acu;
-        console.log(`La division de: ${basexPotencia} / ${acu} es: ${entre}`);
-
-        vas = vas + entre;
-
-        console.log(`Debe darme algo ${vas +1}`);
-        conta++;
-        ciclo++;
-
-        var zig = vas + 1;
-    }
-    var fin = zig;
-
+    //resultado de la sumatoria
+    pros5 = sigue;
+    //Proceso 2
+    pros6 = Math.pow(pros1, variable2);
     //Factorial de s
     var totalS = 1;
     for (let i = 1; i <= variable2; i++) {
         totalS = totalS * i;
     }
     var fac3 = totalS;
+    //Divison de ((λ/µ)^n) / n!---- Resultado
+    pros7 = pros6 / fac3;
+    console.log(`Proceso de S= ${pros7}`);
 
-    //Factorial de s + s
-    // var siguiente = 0;
-    // var Total = 1;
-    // for (let i = 1; i <= variable2; i++) {
-    //     var proc = Math.pow(pros1, i) / (Total = Total * i);
-    //     console.log(proc);
+    // Proceso 3
+    pros8 = 1 / (1 - variable4);
+    console.log(`División: ${pros8}`);
 
+    pros9 = pros7 * pros8;
+    //Suma de Resultados de procesos
+    resultado1 = pros5 + pros9;
+    resultadoF = 1 / resultado1;
+    console.log(`El resultado de la sumatoria es: ${resultado1} y la division entre 1 es: ${resultadoF}`);
+
+    document.getElementById('result').value = resultadoF.toFixed(4);
+
+    // //Factorial de n
+    // var totalN = 1;
+    // for (let i = 1; i <= variable5; i++) {
+    //     totalN = totalN * i;
     // }
-    // var fac1 = proc;
+    // var fac2 = totalN;
 
-    //Proceso2
-    pros4 = Math.pow(pros1, variable2);
-    pros5 = pros4 / fac3;
+    // // Proceso1
+    // pros1 = variable1 / variable3;
+    // pros2 = Math.pow(pros1, variable5)
+    // pros3 = pros2 / fac2;
 
-    //Proceso3
-    pros6 = 1;
-    pros7 = pros6 - variable4;
-    pros8 = pros6 / pros7;
+    // // Factorial Sigma -1
+    // var tol = 1;
+    // for (let h = 1; h <= variable2 - 1; h++) {
+    //     tol = tol * h;
+    //     console.log(tol);
+    // }
+    // let par = tol;
 
-    //ProcesoSuma
-    pros9 = pros5 * pros8;
-    pros10 = pros3 + fin + pros9;
+    // //Factorial Sigma
+    // var cel = 1;
+    // var ti = 1;
+    // let c = 0;
+
+    // var conta = 0;
+    // var ciclo = 1;
+    // var acu = 1;
+    // var fal = 1;
+    // var cero = 1;
+    // var vas = 0;
 
 
-    //Final
-    resultado1 = 1 / pros10;
-    document.getElementById('result').value = resultado1.toFixed(4);
+    // while (ciclo < variable2 && conta <= variable2 - 1) {
+    //     var basexPotencia = Math.pow(pros1, ciclo);
+    //     console.log(`Potencia de: ${pros1} ^ ${conta} = ${basexPotencia}`);
+
+
+    //     acu = acu * ciclo;
+    //     // var contenerdor = contenerdor + ciclo;
+    //     console.log(`El factorial de ${ciclo}! es: ${acu}`);
+
+    //     var entre = basexPotencia / acu;
+    //     console.log(`La division de: ${basexPotencia} / ${acu} es: ${entre}`);
+
+    //     vas = vas + entre;
+
+    //     console.log(`Debe darme algo ${vas +1}`);
+    //     conta++;
+    //     ciclo++;
+
+    //     var zig = vas + 1;
+    // }
+    // var fin = zig;
+
+    // //Factorial de s
+    // var totalS = 1;
+    // for (let i = 1; i <= variable2; i++) {
+    //     totalS = totalS * i;
+    // }
+    // var fac3 = totalS;
+
+    // //Factorial de s + s
+    // // var siguiente = 0;
+    // // var Total = 1;
+    // // for (let i = 1; i <= variable2; i++) {
+    // //     var proc = Math.pow(pros1, i) / (Total = Total * i);
+    // //     console.log(proc);
+
+    // // }
+    // // var fac1 = proc;
+
+    // //Proceso2
+    // pros4 = Math.pow(pros1, variable2);
+    // pros5 = pros4 / fac3;
+
+    // //Proceso3
+    // pros6 = 1;
+    // pros7 = pros6 - variable4;
+    // pros8 = pros6 / pros7;
+
+    // //ProcesoSuma
+    // pros9 = pros5 * pros8;
+    // pros10 = pros3 + fin + pros9;
+
+
+    // //Final
+    // resultado1 = 1 / pros10;
+    // document.getElementById('result').value = resultado1.toFixed(4);
 
 }
 
@@ -179,9 +224,9 @@ function refresh1() {
     document.getElementById('MediaS').value = vacio;
     document.getElementById('MediaServicio').value = vacio;
     document.getElementById('pSistema').value = vacio;
-    document.getElementById('nCliente').value = vacio;
     document.getElementById('result').value = vacio;
     document.getElementById('por').value = vacio;
+    //document.getElementById('nCliente').value = vacio;
 
 }
 
@@ -326,12 +371,10 @@ function promedioTiempoEspera() {
     variable2 = parseFloat(document.getElementById('MedSe').value);
     console.log(`${variable1}; ${variable2}`);
     //Proceso
-    pros1 = 1;
-    pros2 = pros1 / variable2;
-
-    resultado1 = variable1 + pros2;
-    console.log(`${pros2}; ${resultado1}`);
-    document.getElementById('result').value = resultado1.toFixed(3);
+    pors1 = 1 / variable2;
+    resultado1 = variable1 + pros1;
+    console.log(`${pros1}; ${resultado1}`);
+    document.getElementById('result').value = resultado1;
     // let por3 = `${re4.toFixed(2) } %`
     // document.getElementById('por').value = por3;
 }

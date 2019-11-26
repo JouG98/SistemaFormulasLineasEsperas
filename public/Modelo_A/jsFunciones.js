@@ -6,7 +6,7 @@ function promedioSistema() {
 
     document.getElementById('result').value = resul.toFixed(3);
 
-    let por = `${resul.toFixed(2) * 100} %`
+    let por = `${resul.toFixed(4) * 100} %`
     document.getElementById('por').value = por;
 
 }
@@ -53,9 +53,9 @@ function promedioCServi() {
     let di = MS - ML;
     let re2 = ML / di;
 
-    document.getElementById('result').value = re2.toFixed(3);
-    let por2 = `${re2.toFixed(2) } %`
-    document.getElementById('por').value = por2;
+    document.getElementById('result').value = re2;
+    // let por2 = `${re2.toFixed( } %`
+    // document.getElementById('por').value = por2;
 }
 
 function refresh2() {
@@ -95,8 +95,8 @@ function promedioTiempoEspera1() {
     let a = TS - TE;
     let re4 = 1 / a;
     document.getElementById('result').value = re4.toFixed(3);
-    let por3 = `${re4.toFixed(2) } %`
-    document.getElementById('por').value = por3;
+    // let por3 = `${re4.toFixed(2) } %`
+    // document.getElementById('por').value = por3;
 }
 
 function refresh4() {
@@ -114,8 +114,8 @@ function promedioTiempoEspera() {
     let re5 = TEs * TSs;
 
     document.getElementById('result').value = re5.toFixed(3);
-    let por3 = `${re5.toFixed(2) } %`
-    document.getElementById('por').value = por3;
+    // let por3 = `${re5.toFixed(2) } %`
+    // document.getElementById('por').value = por3;
 }
 
 function refresh5() {

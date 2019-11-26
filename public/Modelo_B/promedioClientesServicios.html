@@ -94,7 +94,7 @@
         </div>
 
         <div class="row py-4">
-            <div class="col-6   ">
+            <div class="col-12 col-sm-12 col-md-6 ">
                 <div class="card text-center">
 
                     <div class="card-body">
@@ -107,23 +107,23 @@
 
                             <div class="form-group text-left">
                                 <label for="inputAddress"><h5>Po (probabilidad de 0 clientes) =</h5></label>
-                                <input type="number" class="form-control" id="Probabilidad" placeholder="100 (clientes/hora)" autofocus required>
+                                <input type="number" class="form-control" id="Probabilidad" placeholder="0,0377 (probabilidad0clientes)" autofocus required>
                             </div>
                             <div class="form-group text-left">
                                 <label for="inputAddress"><h5>λ (Media de llegada) =</h5></label>
-                                <input type="number" class="form-control" id="MediaLlegada" placeholder="100 (clientes/hora)" autofocus required>
+                                <input type="number" class="form-control" id="MediaLlegada" placeholder="3 (clientes/hora)" autofocus required>
                             </div>
                             <div class="form-group text-left">
-                                <label for="inputAddress2"><h5>µ (Media de servicio) =</h5></label>
-                                <input type="number" class="form-control" id="MediaServi" placeholder="150 (clientes/hora)" autofocus required>
+                                <label for="inputAddress2"><h5>µ (Media) =</h5></label>
+                                <input type="number" class="form-control" id="MediaServi" placeholder="1 (clientes/hora)" autofocus required>
                             </div>
                             <div class="form-group text-left">
                                 <label for=""><h5>s (Media de servicio) =</h5></label>
-                                <input id="MediaS" type="number" class="form-control" placeholder="150 (clientes/hora)" autofocus required>
+                                <input id="MediaS" type="number" class="form-control" placeholder="4 (Media de servicio)" autofocus required>
                             </div>
                             <div class="form-group text-left">
                                 <label for=""><h5>p (Promedio de sistema) =</h5></label>
-                                <input id="PromedioS" type="number" class="form-control" placeholder="150 (clientes/hora)" autofocus required>
+                                <input id="PromedioS" type="number" class="form-control" placeholder="0,75 (promedioSistema)" autofocus required>
                             </div>
 
                             <button type="button" class="btn btn-primary" onclick="promedioCServi()" value="Resultado">
@@ -137,7 +137,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6   ">
+            <div class="col-12 col-sm-12 col-md-6 ">
                 <div class="card text-center">
 
                     <div class="card-body">

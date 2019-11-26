@@ -94,7 +94,7 @@
         </div>
 
         <div class="row py-4">
-            <div class="col-6   ">
+            <div class="col-12 col-sm-12 col-md-6 ">
                 <div class="card text-center">
 
                     <div class="card-body">
@@ -107,19 +107,19 @@
 
                             <div class="form-group text-left">
                                 <label for=""><h5>Lq (Promedio clientes espera) =</h5></label>
-                                <input id="MediaServicio" type="number" class="form-control" placeholder="150 (clientes/hora)" autofocus required>
+                                <input id="pClientes" type="number" class="form-control" placeholder="0,30 (tiempo espera)" autofocus required>
                             </div>
                             <div class="form-group text-left">
                                 <label for="inputAddress2"><h5>N (Número de clientes) =</h5></label>
-                                <input type="number" class="form-control" id="nCliente" placeholder="150 (clientes/hora)" autofocus required>
+                                <input type="number" class="form-control" id="nCliente" placeholder="10 (clientes)" autofocus required>
                             </div>
                             <div class="form-group text-left">
                                 <label for="inputAddress2"><h5>L (Promedio clientes-Servicio) =</h5></label>
-                                <input type="number" class="form-control" id="nCliente" placeholder="150 (clientes/hora)" autofocus required>
+                                <input type="number" class="form-control" id="pServicio" placeholder="0,76 (promedioClientesServicios)" autofocus required>
                             </div>
                             <div class="form-group text-left">
                                 <label for=""><h5>λ (Media de llegada) =</h5></label>
-                                <input id="MediaLlegada" type="number" class="form-control" placeholder="100 (clientes/hora)" autofocus required>
+                                <input id="MediaLlegada" type="number" class="form-control" placeholder="0,005 (MediaLlegada)" autofocus required>
                             </div>
                             <button type="button" class="btn btn-primary" onclick="promedioTiempoEspera()" value="Resultado">
                                     Calcular
@@ -132,7 +132,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6   ">
+            <div class="col-12 col-sm-12 col-md-6 ">
                 <div class="card text-center">
 
                     <div class="card-body">
