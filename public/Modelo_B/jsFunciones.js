@@ -21,6 +21,9 @@ let pros10 = "";
 
 let resultado1 = "";
 let resultadoF = "";
+let resultadoP = "";
+let pS = "";
+let f = "";
 
 // var num = 0;
 
@@ -38,12 +41,110 @@ function promedioSistema() {
     variable2 = parseFloat(document.getElementById('MediaS').value);
     variable3 = parseFloat(document.getElementById('MediaServicio').value);
 
-    pros1 = variable2 * variable3;
+    if (variable1 == "" && variable2 == "" && variable3 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
 
-    resultado1 = variable1 / pros1;
+    pS = variable2 * variable3;
 
-    document.getElementById('result').value = resultado1.toFixed(3);
+    resultadoP = variable1 / pS;
+    //Resultado de Promedio Sistema
+    var variable4 = resultadoP.toFixed(3);
 
+    f = `${resultadoP.toFixed(3)} o ${resultadoP.toFixed(2)*100} %`
+
+    document.getElementById('result').value = f;
+
+    //Probabilidad de 0 clientes
+
+    //División
+    pros1 = variable1 / variable3;
+    //Proceso sumatoria
+    var t = 1;
+    var sigue = 0;
+    for (let i = 0; i <= variable2 - 1; i++) {
+        pros2 = Math.pow(pros1, i);
+        console.log(`Valor: ${pros1}^${i}=${pros2}`);
+        t = t * i;
+        if (t == 0) {
+            t = 1;
+        }
+        pros3 = t;
+        console.log(`Acumulador: t=${t}* ${i} = ${pros3}`);
+        pros4 = pros2 / pros3;
+        console.log(`Division: (λ/µ)^n =${pros2} y esto dividido para el factorial: ${pros3} = ${pros4}`);
+        sigue = sigue + pros4;
+        console.log(`La suma de: ((λ/µ)^n) / n!= ${sigue} `);
+    }
+    //resultado de la sumatoria
+    pros5 = sigue;
+    //Proceso 2
+    pros6 = Math.pow(pros1, variable2);
+    //Factorial de s
+    var totalS = 1;
+    for (let i = 1; i <= variable2; i++) {
+        totalS = totalS * i;
+    }
+    var fac3 = totalS;
+    //Divison de ((λ/µ)^n) / n!---- Resultado
+    pros7 = pros6 / fac3;
+    console.log(`Proceso de S= ${pros7}`);
+
+    // Proceso 3
+    pros8 = 1 / (1 - variable4);
+    console.log(`División: ${pros8}`);
+
+    pros9 = pros7 * pros8;
+    //Suma de Resultados de procesos
+    resultado1 = pros5 + pros9;
+
+    //Resultado de probabilidad de 0 clientes
+    resultadoF = 1 / resultado1;
+    console.log(`El resultado de la sumatoria es: ${resultado1} y la division entre 1 es: ${resultadoF}`);
+
+    var j = `Probabilidad de 0 clientes: Po = ${resultadoF.toFixed(4)}`;
+    document.getElementById('por').value = j;
+
+    //Promedio Cliente Servicio  Lq =
+
+    var sas, sas1, sas2, sas3, sas4, sas5, sas6;
+
+    sas = variable1 / variable3;
+    sas1 = Math.pow(sas, variable2);
+    sas2 = resultadoF * sas1 * variable4;
+
+    sas3 = Math.pow((1 - variable4), 2);
+    sas4 = fac3 * sas3;
+
+    sas5 = sas2 / sas4;
+
+
+    let kas = `Promedio Cliente Servicio  Lq = ${sas5.toFixed(2)}`
+    document.getElementById('por1').value = kas;
+
+    //Promedio Cliente Espera
+
+    var lolo;
+    lolo = sas5 / variable1;
+
+    let kas1 = `Promedio Cliente Espera  Wq = ${lolo.toFixed(2)}`
+    document.getElementById('por2').value = kas1;
+
+    //Promedio Tiempo Servicio
+    var tutu;
+    tutu = lolo + (1 / variable3);
+
+    let kas2 = `Promedio Tiempo Servicio  W = ${tutu.toFixed(2)}`
+    document.getElementById('por3').value = kas2;
+
+    //Promedio Tiempo Espera
+    var lalla;
+    lalla = variable1 * tutu;
+
+    let kas3 = `Promedio Tiempo Espera  L = ${lalla.toFixed(2)}`
+    document.getElementById('por4').value = kas3;
     // resultadoF = `${resultado1.toFixed(2) * 100} %`;
     // document.getElementById('por').value = resultadoF;
 
@@ -59,6 +160,11 @@ function refresh() {
     document.getElementById('MediaS').value = vacio;
     document.getElementById('result').value = vacio;
     document.getElementById('por').value = vacio;
+    document.getElementById('por1').value = vacio;
+    document.getElementById('por2').value = vacio;
+    document.getElementById('por3').value = vacio;
+    document.getElementById('por4').value = vacio;
+    document.getElementById('por5').value = vacio;
 
 }
 //////////////////////////
@@ -80,6 +186,12 @@ function probabilidad() {
     variable3 = parseFloat(document.getElementById('MediaServicio').value);
     variable4 = parseFloat(document.getElementById('pSistema').value);
     variable5 = parseFloat(document.getElementById('nCliente').value);
+
+    if (variable1 == "" && variable2 == "" && variable3 == "" && variable4 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
 
     //División
     pros1 = variable1 / variable3;
@@ -237,6 +349,12 @@ function probabilidadNcliente() {
     variable4 = parseFloat(document.getElementById('0Cliente').value);
 
 
+    if (variable1 == "" && variable2 == "" && variable3 == "" && variable4 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
+
     //Factorial de n
     var totalN = 1;
     for (let i = 1; i <= variable3; i++) {
@@ -261,6 +379,12 @@ function probabilidadNcliente2() {
     variable3 = parseFloat(document.getElementById('nCliente').value);
     variable4 = parseFloat(document.getElementById('0Cliente').value);
     variable5 = parseFloat(document.getElementById('MediaS').value);
+
+    if (variable1 == "" && variable2 == "" && variable3 == "" && variable4 == "" && variable5 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     //Factorial de s
     var totalS = 1;
     for (let i = 1; i <= variable5; i++) {
@@ -302,6 +426,11 @@ function promedioCServi() {
     variable4 = parseFloat(document.getElementById('MediaS').value);
     variable5 = parseFloat(document.getElementById('PromedioS').value);
 
+    if (variable1 == "" && variable2 == "" && variable3 == "" && variable4 == "" && variable5 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     //Operacion del Numerador
     pros1 = variable2 / variable3;
     pros2 = Math.pow(pros1, variable4);
@@ -347,6 +476,11 @@ function promedioEspera() {
     variable1 = parseFloat(document.getElementById('proCli').value);
     variable2 = parseFloat(document.getElementById('MediaLlegada').value);
 
+    if (variable1 == "" && variable2 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     //División
     pros1 = variable1 / variable2;
 
@@ -369,6 +503,12 @@ function promedioTiempoEspera() {
 
     variable1 = parseFloat(document.getElementById('MeLle').value);
     variable2 = parseFloat(document.getElementById('MedSe').value);
+    if (variable1 == "" && variable2 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
+
     console.log(`${variable1}; ${variable2}`);
     //Proceso
     pors1 = 1 / variable2;
@@ -391,6 +531,12 @@ function refresh4() {
 function promedioTiempoEspera1() {
     variable1 = parseFloat(document.getElementById('MediaLlegada').value);
     variable2 = parseFloat(document.getElementById('PTSer').value);
+
+    if (variable1 == "" && variable2 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     console.log(`${variable1}; ${variable2}`);
 
     pros1 = variable1 * variable2;

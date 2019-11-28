@@ -23,6 +23,11 @@ function promedioSistema() {
 
     variable1 = parseFloat(document.getElementById('MediaLlegada').value);
 
+    if (variable1 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     pros1 = 1 - variable1;
 
     console.log(`${variable1}; ${pros1}`);
@@ -50,6 +55,11 @@ function promedioEspera() {
     variable3 = parseFloat(document.getElementById('MediaServicio').value);
     variable4 = parseFloat(document.getElementById('nPo').value);
 
+    if (variable1 == "" && variable2 == "" && variable3 == "" && variable4 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     console.log(`${variable1}; ${variable2}; ${variable3}; ${variable4}`);
 
     //Proceso
@@ -84,6 +94,11 @@ function promedioCServi() {
     variable3 = parseFloat(document.getElementById('MediaLlegada').value);
     variable4 = parseFloat(document.getElementById('nPo').value);
 
+    if (variable1 == "" && variable2 == "" && variable3 == "" && variable4 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     console.log(`${variable1}; ${variable2}; ${variable3}; ${variable4}`);
     // Proceso
     pros1 = 1 - variable4;
@@ -116,6 +131,12 @@ function promedioTiempoEspera() {
     variable2 = parseFloat(document.getElementById('nCliente').value);
     variable3 = parseFloat(document.getElementById('pServicio').value);
     variable4 = parseFloat(document.getElementById('MediaLlegada').value);
+
+    if (variable1 == "" && variable2 == "" && variable3 == "" && variable4 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     console.log(`${variable1}; ${variable2}; ${variable3}; ${variable4}`);
     //Procesos
     pros1 = variable2 - variable3;
@@ -146,6 +167,12 @@ function promedioTiempoEspera1() {
     variable1 = parseFloat(document.getElementById('pClientes').value);
     variable2 = parseFloat(document.getElementById('nCliente').value);
     variable3 = parseFloat(document.getElementById('MediaLlegada').value);
+
+    if (variable1 == "" && variable2 == "" && variable3 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
     console.log(`${variable1}; ${variable2}; ${variable3}`);
 
     //Procesos
@@ -179,6 +206,12 @@ function probabilidad() {
     variable2 = parseFloat(document.getElementById('MediaLlegada').value);
     variable3 = parseFloat(document.getElementById('MediaServicio').value);
     variable4 = parseFloat(document.getElementById('nCliente').value);
+
+    if (variable1 == "" && variable2 == "" && variable3 == "" && variable4 == "") {
+        alert("Datos exitosos");
+    } else {
+        alert("Todos los campos son requeridos");
+    }
 
     console.log(`${variable1}; ${variable2}; ${variable3}; ${variable4}`);
 
@@ -238,12 +271,48 @@ function probabilidad() {
         var tu = siguiente;
 
     }
-
+    //Resultado Po
     pros6 = 1 / tu;
     console.log(pros6);
 
-
     document.getElementById('result').value = pros6.toFixed(3);
+
+    //Promedio del servidor Fórmula: ρ = 1 - Po
+
+    var servi;
+    servi = 1 - pros6;
+    let kas = `Promedio del servidor: ρ = ${servi.toFixed(2)}`;
+
+    document.getElementById('por').value = kas;
+
+
+    //Promedio Cliente Espera Fórmula: Lq = 
+    var lal, lla1, lla2, lla3, lla4;
+    lal = (variable2 + variable3) * (1 - pros6);
+    lla1 = variable1 - (lal / variable2);
+    console.log(lla1);
+    let kas1 = `Promedio Cliente Espera: Lq = ${lla1.toFixed(2)}`;
+    document.getElementById('por1').value = kas1;
+    //Promedio Cliente Servicio Fórmula: L = 
+    lla2 = ((variable3 * (1 - pros6)) / variable2);
+    lla3 = variable1 - lla2;
+    console.log(lla3);
+    let kas2 = `Promedio Cliente Servicio: L = ${lla3.toFixed(2)}`;
+    document.getElementById('por2').value = kas2;
+
+    //Promedio Tiempo espera Fórmula: Wq = 
+    lla4 = lla1 * (1 / ((variable1 - lla3) * variable2));
+    console.log(lla4);
+    let kas3 = `Promedio Tiempo espera: Wq = ${lla4.toFixed(2)}`;
+    document.getElementById('por3').value = kas3;
+
+    //Promedio Tiempo Servicio Fórmula: W = 
+    var lla5;
+    lla5 = lla3 * (1 / ((variable1 - lla3) * variable2));
+    console.log(lla5);
+    let kas4 = `Promedio Tiempo Servicio: W = ${lla5.toFixed(2)}`;
+    document.getElementById('por4').value = kas4;
+
 
     // let por1 = `${re.toFixed(2) * 100} %`
     // document.getElementById('por').value = por1;
@@ -256,6 +325,19 @@ function refresh1() {
     document.getElementById('MediaServicio').value = vacio;
     document.getElementById('result').value = vacio;
     document.getElementById('por').value = vacio;
+    document.getElementById('por1').value = vacio;
+    document.getElementById('por2').value = vacio;
+    document.getElementById('por3').value = vacio;
+    document.getElementById('por4').value = vacio;
     // document.getElementById('nCliente').value = vacio;
 
+}
+
+function validar(id) {
+    var elemento = document.getElementById(id);
+    if (elemento.checkVality()) {
+        elemento.style.borderBottomColor = "blue";
+    } else {
+        elemento.style.borderBottomColor = "red";
+    }
 }
